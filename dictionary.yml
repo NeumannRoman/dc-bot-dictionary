@@ -1,0 +1,252 @@
+# @brief:  Dictionary containing key-value pairs used by LGBoTQ. Document must use UTF-8 encoding.
+#          The official YAML specification may be accessed here: https://yaml.org/spec/1.2.2/
+# @date:   2022.03.07
+# @author: Roman Neumann
+# 
+# -------------------------------------------------------------------------------------------------
+# In the following section I will try to explain the few rules this document must follow when 
+# modified. If need be contact me via Discord: Roman#8312.
+# 
+# -------------------------------------------------------------------------------------------------
+# 1   [EXAMPLE]
+# When a user writes a message in any channel this bot will respond to that message if it 
+# contains a certain word. For example one could write:
+#   > I love pizza!
+# The bot could possibly respond with:
+#   > 🍕!
+# The way to capture this interaction is with a simple pair of 'words':
+#   pizza: 🍕!
+# 
+# The pair consists of two sides which are separated by a colon(:). Furthermore each new pair is
+# followed by a line break.
+# 
+# -------------------------------------------------------------------------------------------------
+# 2   [KEYS]
+# The left word 'pizza' of that pair <pizza: 🍕!> is searched for in a user-written message. In the
+# following, this is referred to as a key. 
+# 
+# 
+# 2.1 [CAPITALIZATION]
+# Keys are case-insensitive, i.e. there is no difference in capitalization of the letters.
+# The following words will hence produce the same response:
+#   pizza
+#   Pizza
+#   PIZZA
+#   pIzZa
+# 
+# 
+# 2.2 [INVALID SYMBOLS]
+# Keys may generally use any printable characters including numbers and special characters such
+# as whitespaces. They may however not contain a newline character nor begin with either of these
+# characters:
+#   '['
+#   ']'
+#   '{'
+#   '}'
+#   '>'
+#   '|'
+#   '*'
+#   '&'
+#   '!'
+#   '%'
+#   '#'
+#   '`'
+#   '@'
+#   ','
+# 
+# Or contain any of the following sequences of characters:
+#   ': '
+#   ' #'
+#   ' -'
+#
+# For the purposes of the next section it is also not recommended to use keys that contain commas
+# inside of a word or between words that are not separated by a whitespace. I.e. try avoiding this:
+#   some,key
+# 
+# Instead insert a space either before and/or after the comma could look like this:
+#   some, key
+# 
+# 
+# 2.3 [MULTIPLE KEYS]
+# Possible keys are either a single word, e.g. 'pizza' as seen above or they may be multiple keys.
+# This is expressed as:
+#   [red, green, blue]: Colorful!
+# 
+# If multiple keys are used they will result in a single response even if multiple keys are
+# present in a message:
+#   > Red doesn't complement green that well.
+# Will result in:
+#   > Colorful!
+# 
+# 
+# 2.4 [UNIQUENESS]
+# WHEN ADDING NEW KEYS TO THIS DOCUMENT MAKE SURE THAT THERE ARE NO DUPLICATE KEYS, I.E. NO KEY
+# IS USED MORE THAN ONCE ON THE LEFT SIDE OF A PAIR!
+# 
+# -------------------------------------------------------------------------------------------------
+# 3   [RESPONSES]
+# The right hand side '🍕!' after the colon of the pair <pizza: 🍕!> is the response by the bot.
+# 
+# 
+# 3.1 [CAPITALIZATION]
+# If the response uses text, the capitalization is important. It will be printed in Discord in the
+# exact way it is written after the colon.
+# 
+# 
+# 3.2 [MULTIPLE RESPONSES]
+# Possible responses are a single word / sentence, e.g. 'Colorful!' as seen above. Or there may be
+# multiple responses such as:
+#   love:
+#       - ❤
+#       - :)
+# 
+# A response is then chosen at random with an equal probability for each option. Again this will 
+# always lead to exactly one response:
+#   > I love fridays!
+# May by chance results in:
+#   > ❤
+# Or:
+#   > :)
+# 
+# 
+# 3.3 [UNIQUENESS]
+# Responses do not adhere to the same constraints as keys and may be used multiple times as needed.
+# In that case it may be better to group both keys together in a group as is seen in [2.3].
+# 
+# 
+# 3.4 [IMAGES + GIFS]
+# If one wants to use an image or a GIF then the response has to be a hyperlink anchored to the
+# desired file. It must be hosted on any website and cannot be a local file.
+# For example:
+#   stick: https://tenor.com/view/stick-bug-stick-bugged-bug-dancing-bug-dancing-gif-18059923
+# 
+# If one wants to use a local file they first need to upload it to an image hosting site and
+# reference the resulting hyperlink afterwards.
+# 
+# 
+# 3.5 [DISCORD FORMATTING]
+# Since the bot simply writes messages the response may be formatted in any way Discord allows.
+# For more details see https://www.remote.tools/remote-work/discord-text-formatting.
+# 
+# #################################################################################################
+# #################################################################################################
+# 
+# Starting here one may add or remove any pair of keys and responses.
+
+
+#a
+abc: abcdefg hijklmnop qrstuvw xyz jetzt kannst du das abc und mein Kopf tut mir nicht weh
+[ace, asexual]: ":nat_ace:" 
+
+#b
+Bernd: https://i1.sndcdn.com/artworks-000093360937-lvwn3w-large.jpg
+binder: 
+    - https://www.brace-specialist.nl/wp-content/uploads/2020/05/02-030103-MSD-Squeeze-Ball-Soft-Red-1-100x100.jpeg
+    - https://tenor.com/view/make-it-fit-tight-shoes-gif-13125670
+#c
+
+#d
+[deadname, misgender]: https://i.lcpdfrusercontent.com/uploads/monthly_2020_01/615783924_hide-pain-harold-title-red-web.thumb.jpg.ab50b278f97e20d8ecce8def10d6d95c.jpg
+
+#e
+#f
+french: 
+    - https://i.kym-cdn.com/entries/icons/square/000/017/318/angry_pepe.jpg
+    - ":Guillotine:" 
+[fruit, straightn’t]: ":nat_gay:"
+
+#g
+gay:
+    - 👀
+    - ╰(°▽°)╯
+    - https://tenor.com/view/leonardo-dicaprio-cheers-the-great-gatsby-coupe-glass-toast-gif-10657915
+    - that's gay
+    - 🌈
+    - gae
+    - ":Pride_dnd:" 
+    - ":nat_gay:"
+gender: 
+    - https://i1.sndcdn.com/artworks-pmpGv6uQng3g4fY4-osH1yA-large.jpg
+    - ":transgender_flag:"
+    - ":nat_trans:" 
+    - ":nat_enby:" 
+german: https://songsear.ch/static/artists/2017/05/04/02/1449_100x100.jpg
+
+#h
+homophobic: https://img.discogs.com/H94tWGjTaucZ1fOOv49FIDear90=/100x100/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-14660441-1579108374-8930.jpeg.jpg
+hsm: 
+    - 👁
+    - Wildcats!
+    - https://tenor.com/view/hsm-high-school-musical-were-all-in-this-together-dance-gif-5323618
+    - https://tenor.com/view/high-school-musical-i-dont-dance-this-took-me-too-long-to-make-high-school-musical2-gif-17171940
+    - https://tenor.com/view/dance-off-im-here-hsm-high-school-musical-troy-bolton-gif-16329546
+    - https://tenor.com/view/sharpay-hsm-hsm2-spa-skincare-gif-12214503
+
+#i
+I'm gay: 
+    - that's gay
+    - hi gay I'm dad
+    - 👁
+    - me too
+    - https://i1.sndcdn.com/artworks-pmpGv6uQng3g4fY4-osH1yA-large.jpg
+
+#j
+
+#k
+knee: (～￣▽￣)～
+
+#l
+[lesbian, sapphic]: 
+    - lsebian
+    - ":nat_lesbian:"
+    - gaygaygay
+love:
+    - ❤
+    - :)
+
+#m
+marco: Polo!
+morning: ":tired:" 
+
+#n
+#o
+
+#p
+pan: ":cooking:"
+pizza: 🍕!
+
+#q
+queer: ":nat_gay:" 
+
+#r
+rich: 
+    - ":Guillotine:"
+    - eat the rich
+rowling: 
+    - https://qph.fs.quoracdn.net/main-thumb-412345551-100-effjxinssmfmdynpipetexrvenjzfgvk.jpeg
+    - https://i.kym-cdn.com/entries/icons/square/000/017/318/angry_pepe.jpg
+
+#s 
+stick: https://tenor.com/view/stick-bug-stick-bugged-bug-dancing-bug-dancing-gif-18059923
+
+#t
+[trans, testosterone, estrogen, hormones]: 
+    - https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/282/transgender-flag_1f3f3-fe0f-200d-26a7-fe0f.png
+    - ":transgender_flag:"
+    - ":nat_trans:" 
+    - ":nat_enby:" 
+troll: https://i.kym-cdn.com/entries/icons/thumb/000/000/091/Problem.jpg?1236877228
+
+#u
+[uwu, owo]: https://image.winudf.com/v2/image1/Y29tLmJheXVzYS5zdGlja2VyZWRpdF9pY29uXzE1OTYwMjQ4MTRfMDIw/icon.png?w=100&fakeurl=1
+
+#v
+#w
+what team?: Wildcats!
+
+#x
+#y
+#z
+
+
+
